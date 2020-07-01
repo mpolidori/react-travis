@@ -22,6 +22,10 @@ echo "Creating the PostgreSQL user and database..."
 sudo -u postgres psql -c "CREATE USER ckan_default WITH PASSWORD 'pass';"
 sudo -u postgres psql -c 'CREATE DATABASE ckan_test WITH OWNER ckan_default;'
 
+# Unpin CKAN's psycopg2 dependency get an important bugfix
+# https://stackoverflow.com/questions/47044854/error-installing-psycopg2-2-6-2
+sed -i '/psycopg2/c\psycopg2' requirements.txt
+
 echo "SOLR config..."
 # Solr is multicore for tests on ckan master, but it's easier to run tests on
 # Travis single-core. See https://github.com/ckan/ckan/issues/2972
