@@ -11,3 +11,4 @@ install:
 script: sh bin/travis-run.sh
 after_success:
     - coveralls
+
