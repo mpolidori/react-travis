@@ -14,7 +14,7 @@ export latest_ckan_release_branch=`git branch --all | grep remotes/origin/releas
 echo "CKAN branch: $latest_ckan_release_branch"
 git checkout $latest_ckan_release_branch
 python setup.py develop
-pip install psycopg2==2.7.7
+pip install psycopg2==2.8.2
 pip install -r requirements.txt
 pip install -r dev-requirements.txt
 cd -
