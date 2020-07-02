@@ -14,6 +14,7 @@ export latest_ckan_release_branch=`git branch --all | grep remotes/origin/releas
 echo "CKAN branch: $latest_ckan_release_branch"
 git checkout $latest_ckan_release_branch
 python setup.py develop
+pip install psycopg2==2.7.7
 pip install -r requirements.txt
 pip install -r dev-requirements.txt
 cd -
@@ -21,10 +22,6 @@ cd -
 echo "Creating the PostgreSQL user and database..."
 sudo -u postgres psql -c "CREATE USER ckan_default WITH PASSWORD 'pass';"
 sudo -u postgres psql -c 'CREATE DATABASE ckan_test WITH OWNER ckan_default;'
-
-# Unpin CKAN's psycopg2 dependency get an important bugfix
-# https://stackoverflow.com/questions/47044854/error-installing-psycopg2-2-6-2
-sed -i '/psycopg2/c\psycopg2' requirements.txt
 
 echo "SOLR config..."
 # Solr is multicore for tests on ckan master, but it's easier to run tests on
