@@ -29,8 +29,6 @@ jobs:
     - stage: Tests
       python: "2.7"
       env: CKANVERSION=master
-    - python: "3.6"
-      env: CKANVERSION=master
     - python: "2.7"
       env: CKANVERSION=2.8
 
