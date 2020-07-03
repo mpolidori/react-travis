@@ -7,7 +7,7 @@ services:
     - postgresql
 install:
     - bash bin/travis-build.bash
-    - bash bin/travis-run.bash
+    - bash bin/travis-run.sh
 
 jobs:
   include:
