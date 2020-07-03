@@ -64,7 +64,6 @@ sudo -u postgres psql -c 'CREATE DATABASE ckan_test WITH OWNER ckan_default;'
 
 echo "Initialising the database..."
 cd ckan
-
 if (( $CKAN_MINOR_VERSION >= 9 ))
 then
     ckan -c test-core.ini db init
