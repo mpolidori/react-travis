@@ -73,14 +73,6 @@ else
 fi
 cd -
 
-if (( $CKAN_MINOR_VERSION >= 9 ))
-then
-    ckan -c test.ini harvester initdb
-else
-    paster harvester initdb -c test.ini
-fi
-cd -
-
 echo "Installing ckanext-react_usmetadata and its requirements..."
 pip install -r requirements.txt
 pip install -r dev-requirements.txt
