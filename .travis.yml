@@ -26,8 +26,6 @@ jobs:
         - flake8 . --count --max-line-length=127 --statistics --exclude ckan --exit-zero
     - stage: Tests
       python: "2.7"
-      env: CKANVERSION=master
-    - python: "2.7"
       env: CKANVERSION=2.8
 
 cache:
