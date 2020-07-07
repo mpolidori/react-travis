@@ -11,6 +11,7 @@ class TestReactMetadataPlugin(helpers.FunctionalTestBase):
     def setup(self):
         super(TestReactMetadataPlugin, self).setup()
         self.user = factories.User()
+        self.dataset = factories.Dataset()
         self.app = self._get_test_app()
 
         if not plugins.plugin_loaded('react_usmetadata'):
@@ -29,7 +30,8 @@ class TestReactMetadataPlugin(helpers.FunctionalTestBase):
 
     def test_edit_dataset_page_snippet_loads(self):
         env = {'REMOTE_USER': self.user['name'].encode('ascii')}
-        response = self.app.get(url='/dataset/beta/edit/test-dataset',
+        dataset_id = self.dataset['name']
+        response = self.app.get(url='/dataset/beta/edit/{}'.format(dataset_id),
                                 extra_environ=env)
 
         assert 'id="dep-of-ed-admin-ui"' in response.body
@@ -42,7 +44,7 @@ class TestReactMetadataPlugin(helpers.FunctionalTestBase):
 
     def test_snippet_package_id_present(self):
         env = {'REMOTE_USER': self.user['name'].encode('ascii')}
-        dataset_id = 'fried-beef'
+        dataset_id = self.dataset['name']
         response = self.app.get(url='/dataset/beta/edit/{}'.format(dataset_id),
                                 extra_environ=env)
 
