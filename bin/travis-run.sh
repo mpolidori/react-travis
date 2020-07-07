@@ -7,7 +7,6 @@ then
 else
    export CKAN_MINOR_VERSION=${CKANVERSION##*.}
 fi
-ls
 
 if (( $CKAN_MINOR_VERSION >= 9 ))
 then
