@@ -33,6 +33,5 @@ class CustomPageController(CorePackageController):
             extra_vars = {'dataset_id': dataset_id}
             return base.render('package/beta_edit.html',
                                extra_vars=extra_vars)
-
         except NotFound:
             toolkit.abort(404, toolkit._('Dataset not found.'))
